@@ -14,15 +14,9 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/login" element={<Login />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/register" element={<Register />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/profile/:id" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile/:id" element={<Profile />} />
       </Routes>
     </Router>
   );

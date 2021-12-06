@@ -14,7 +14,7 @@ export default function Feed() {
             setPosts(res.data)
         }
         fetchPosts()
-    }, [posts])
+    }, [])
 
     return (
         <div className="feed">

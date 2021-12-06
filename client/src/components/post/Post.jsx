@@ -3,13 +3,12 @@ import { MoreVert } from "@material-ui/icons"
 import { useState, useEffect } from "react"
 import {format} from 'timeago.js'
 import axios from 'axios'
-import { Users } from "../../dummyData"
 
 export default function Post({ post }) {
     const [like, setLike] = useState(post.like)
     const [isLike, setIsLike] = useState(post.likes.length)
     const [user, setUser] = useState({})
-    
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -18,18 +17,18 @@ export default function Post({ post }) {
         }
         fetchUser()
     }, [post.userId])
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER
+    
     const handlerReact = () => {
         setLike(isLike ? like - 1 : like + 1)
         setIsLike(!isLike)
     }
-    const src_img = PF + user.profilePicture
+
     return (
         <div className="post">
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <img className="postProfileImg" src={src_img} alt="" />
+                        <img className="postProfileImg" src={user.profilePicture || PF + "person/22.jpg"} alt="" />
                         <span className="postUserName">{user.username}</span>
                         <span className="postDate">{format(post.createdAt)}</span>
                     </div>

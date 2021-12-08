@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import AuthReducer from "./AuthReducer";
 
 const INITIAL_CONTEXT = {
     user: null,
@@ -9,7 +10,7 @@ const INITIAL_CONTEXT = {
 export const AuthContext = createContext(INITIAL_CONTEXT);
 
 export const AuthContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(AuthContext, INITIAL_CONTEXT);
+    const [state, dispatch] = useReducer(AuthReducer, INITIAL_CONTEXT);
     return (
         <AuthContext.Provider
             value={{
@@ -19,7 +20,7 @@ export const AuthContextProvider = ({ children }) => {
                 dispatch
             }}
         >
-            <children />
+            {children}
         </AuthContext.Provider>
     )
 }
